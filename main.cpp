@@ -1,8 +1,9 @@
 #include <iostream>
-#include <vector>
 #include <map>
+#include <vector>
 #include <string>
 #include <sstream>
+#include <cctype>
 using namespace std;
 
 class Intersections {
@@ -78,7 +79,8 @@ class Intersections {
                         count++;
                     }
                 }
-            }        }
+            }        
+        }
     }
     int getCount(){
         return count;
@@ -122,7 +124,9 @@ void parseInput(const string& input, vector<double>& l1, vector<string>& l2) {
         while (c != ')') {
             string point = "";
             while(c != ',' && c != ')'){
-                point += c;
+                if(c != '"'){
+                    point += c;
+                }
                 ss >> c;
             }
             if(c != ')'){
@@ -135,7 +139,7 @@ void parseInput(const string& input, vector<double>& l1, vector<string>& l2) {
 
 
 int main() {
-    cout << "Example Input: {(0.78, 1.47, 1.77, 3.72),(s1, s2, e1, e2)}\nInput values for analysis: ";
+    cout << "Example Input: {(0.78, 1.47, 1.77, 3.72), (\"s1\", \"s2\", \"e1\", \"e2\")}\nInput values for analysis: ";
     string input = "";
     getline(cin, input); // read entire line including whitespace
     vector<double> l1;
