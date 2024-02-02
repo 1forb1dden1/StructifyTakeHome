@@ -124,7 +124,7 @@ void parseInput(const string& input, vector<double>& l1, vector<string>& l2) {
         while (c != ')') {
             string point = "";
             while(c != ',' && c != ')'){
-                if(c != '"'){
+                if(c == 's' || c == 'e' || isdigit(c)){
                     point += c;
                 }
                 ss >> c;
